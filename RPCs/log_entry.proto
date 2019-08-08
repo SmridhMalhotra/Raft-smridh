@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "RPCs";
+
+package RPCs;
+
+
+message LogEntry {
+     uint64 Index=1;
+     uint64 Term=2;
+     string CommandName=3;
+     bytes Command=4;
+}

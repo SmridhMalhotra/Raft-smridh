@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "RPCs";
+
+package RPCs;
+
+service RequestVote{
+    rpc requestVote (RequestVoteRequest) returns (RequestVoteResponse){}
+}
+
+message RequestVoteRequest {
+     uint64 Term=1;
+     uint64 LastLogIndex=2;
+     uint64 LastLogTerm=3;
+     string CandidateName=4;
+}
+
+message RequestVoteResponse {
+     uint64 Term=1;
+     bool VoteGranted=2;
+}

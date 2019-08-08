@@ -1,0 +1,30 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "RPCs";
+
+package RPCs;
+
+import "log_entry.proto";
+
+service AppendEntries{
+    rpc appendEntries (AppendEntriesRequest) returns (AppendEntriesResponse){}
+}
+
+
+
+message AppendEntriesRequest {
+     uint64 Term=1;
+     uint64 PrevLogIndex=2;
+     uint64 PrevLogTerm=3;
+     uint64 CommitIndex=4;
+     string LeaderName=5;
+    repeated LogEntry Entries=6;
+}
+
+message AppendEntriesResponse {
+     uint64 Term=1;
+     uint64 Index=2;
+     uint64 CommitIndex=3;
+     bool   Success=4;
+}
